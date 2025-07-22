@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoMirror - Reconnaissance Émotionnelle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🎭 EmoMirror</h1>
+        <p>Reconnaissance émotionnelle et bien-être personnalisé</p>
+        <div class="pause-branding">
+            <div class="logo">⏸️ PAUSE</div>
+            <div class="subtitle">Innovation & Bien-être en Entreprise</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Section Caméra -->
+        <div class="camera-section">
+            <h2>🔍 Analyse Émotionnelle en Temps Réel</h2>
+            <div class="status-indicator" id="statusIndicator">📱 Caméra Inactive</div>
+            
+            <div class="camera-container">
+                <div class="camera-placeholder" id="cameraPlaceholder">
+                    <div style="font-size: 4em; margin-bottom: 20px;">📷</div>
+                    <div>Cliquez sur "Démarrer l'analyse" pour commencer</div>
+                </div>
+                <video id="cameraVideo" style="display: none;" autoplay muted></video>
+                <canvas id="faceCanvas" style="display: none;"></canvas>
+                
+                <div class="emotion-overlay" id="emotionOverlay" style="display: none;">
+                    <div class="current-emotion" id="currentEmotion">😊 Joie détectée</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill" style="width: 75%"></div>
+                    </div>
+                    <div id="emotionConfidence">Confiance: 75%</div>
+                </div>
+                
+                <div class="facial-points" id="facialPoints"></div>
+            </div>
+
+            <button class="start-camera-btn" id="startCamera" onclick="startEmotionAnalysis()">
+                🚀 Démarrer l'analyse
+            </button>
+            <button class="stop-camera-btn" id="stopCamera" onclick="stopEmotionAnalysis()" style="display: none;">
+                ⏹️ Arrêter
+            </button>
+        </div>
+
+        <!-- Analyse des Émotions -->
+        <div class="analysis-section" id="analysisSection">
+            <div class="emotion-card">
+                <span class="emotion-icon">😊</span>
+                <div class="emotion-name">Joie</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill happy-fill" id="happyLevel" style="width: 0%"></div>
+                </div>
+                <div id="happyPercentage">0%</div>
+            </div>
+
+            <div class="emotion-card">
+                <span class="emotion-icon">😢</span>
+                <div class="emotion-name">Tristesse</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill sad-fill" id="sadLevel" style="width: 0%"></div>
+                </div>
+                <div id="sadPercentage">0%</div>
+            </div>
+
+            <div class="emotion-card">
+                <span class="emotion-icon">😠</span>
+                <div class="emotion-name">Colère</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill angry-fill" id="angryLevel" style="width: 0%"></div>
+                </div>
+                <div id="angryPercentage">0%</div>
+            </div>
+
+            <div class="emotion-card">
+                <span class="emotion-icon">😲</span>
+                <div class="emotion-name">Surprise</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill surprised-fill" id="surprisedLevel" style="width: 0%"></div>
+                </div>
+                <div id="surprisedPercentage">0%</div>
+            </div>
+
+            <div class="emotion-card">
+                <span class="emotion-icon">😐</span>
+                <div class="emotion-name">Neutre</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill neutral-fill" id="neutralLevel" style="width: 0%"></div>
+                </div>
+                <div id="neutralPercentage">0%</div>
+            </div>
+
+            <div class="emotion-card">
+                <span class="emotion-icon">😨</span>
+                <div class="emotion-name">Peur</div>
+                <div class="emotion-level">
+                    <div class="emotion-fill fearful-fill" id="fearfulLevel" style="width: 0%"></div>
+                </div>
+                <div id="fearfulPercentage">0%</div>
+            </div>
+        </div>
+
+        <!-- Recommandations -->
+        <div class="recommendations" id="recommendations">
+            <h3>💡 Recommandations Personnalisées</h3>
+            <div id="recommendationsList">
+                <div class="recommendation-item">
+                    🎯 Commencez l'analyse pour recevoir des conseils personnalisés
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercice Suggéré -->
+        <div class="exercise-suggestion" id="exerciseSuggestion" onclick="startExercise()">
+            <h3>🧘‍♀️ Exercice Recommandé</h3>
+            <p id="exerciseText">Démarrez l'analyse pour découvrir l'exercice parfait pour votre état émotionnel</p>
+        </div>
+
+        <!-- Journal Émotionnel -->
+        <div class="journal-section">
+            <h3>📊 Historique de votre Humeur</h3>
+            <div class="mood-history" id="moodHistory">
+                <!-- Les barres seront générées dynamiquement -->
+            </div>
+            <p style="text-align: center; opacity: 0.8;">Vos émotions des 7 derniers jours</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
